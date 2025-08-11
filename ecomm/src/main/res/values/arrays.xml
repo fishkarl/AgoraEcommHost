@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 脸型美化区域 - 与原始app模块保持一致 -->
+    <string-array name="shape_beauty_area">
+        <item>FACE_SHAPE_AREA_NONE</item>
+        <item>FACE_SHAPE_AREA_HEADSCALE</item>
+        <item>FACE_SHAPE_AREA_FOREHEAD</item>
+        <item>FACE_SHAPE_AREA_FACECONTOUR</item>
+        <item>FACE_SHAPE_AREA_FACELENGTH</item>
+        <item>FACE_SHAPE_AREA_FACEWIDTH</item>
+        <item>FACE_SHAPE_AREA_CHEEKBONE</item>
+        <item>FACE_SHAPE_AREA_CHEEK</item>
+        <item>FACE_SHAPE_AREA_CHIN</item>
+        <item>FACE_SHAPE_AREA_EYESCALE</item>
+        <item>FACE_SHAPE_AREA_NOSELENGTH</item>
+        <item>FACE_SHAPE_AREA_NOSEWIDTH</item>
+        <item>FACE_SHAPE_AREA_MOUTHSCALE</item>
+    </string-array>
+
+    <!-- 脸型美化风格 - 与原始app模块保持一致 -->
+    <string-array name="shape_beauty_style">
+        <item>FACE_SHAPE_STYLE_FEMALE</item>
+        <item>FACE_SHAPE_STYLE_MALE</item>
+    </string-array>
+
+    <!-- 美颜风格类型 - 与原始app模块保持一致 -->
+    <string-array name="beauty_style_type">
+        <item>Close</item>
+        <item>Type 1</item>
+        <item>Type 2</item>
+    </string-array>
+
+    <!-- 美颜风格颜色（2种）- 与原始app模块保持一致 -->
+    <string-array name="beauty_style_color_2">
+        <item>Close</item>
+        <item>Black</item>
+        <item>Brown</item>
+    </string-array>
+
+    <!-- 美颜风格颜色（5种）- 与原始app模块保持一致 -->
+    <string-array name="beauty_style_color_5">
+        <item>None</item>
+        <item>No. 1 color</item>
+        <item>No. 2 color</item>
+        <item>No. 3 color</item>
+        <item>No. 4 color</item>
+        <item>No. 5 color</item>
+    </string-array>
+</resources> 

@@ -1,0 +1,51 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Agora Configuration Files (Sensitive Information)
+ecomm/src/main/res/values/config.xml
+ecomm/src/main/res/values/config.xml.backup.*
+ecomm/src/main/res/values/config.xml.tmp
+
+# Configuration backups
+*.backup.*
+*.tmp
+
+# Local configuration overrides
+local.properties
+local.gradle
+
+# Keystore files
+*.keystore
+*.jks
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE specific files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
