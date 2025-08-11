@@ -49,3 +49,90 @@ logs/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Build outputs and generated files
+**/build/
+**/outputs/
+**/*.apk
+**/*.aab
+**/*.aar
+**/*.ap_
+**/*.dex
+**/*.class
+
+# Gradle build files
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Android Studio
+.idea/
+*.iml
+local.properties
+
+# Generated files
+**/generated/
+**/intermediates/
+**/tmp/
+**/merged_res/
+**/merged_native_libs/
+**/stripped_native_libs/
+**/project_dex_archive/
+**/packaged_res/
+**/packaged_manifests/
+**/navigation_json/
+**/merged_res_blame_folder/
+**/nested_resources_validation_report/
+**/source_set_path_map/
+**/stable_resource_ids_file/
+**/signing_config_versions/
+**/symbol_list_with_package_name/
+
+# APK and Bundle files
+**/build/outputs/apk/
+**/build/outputs/bundle/
+**/build/outputs/logs/
+**/build/outputs/mapping/
+**/build/outputs/native-debug-symbols/
+**/build/outputs/reports/
+
+# Test outputs
+**/build/outputs/androidTest-results/
+**/build/outputs/connected_android_test_additional_outputs/
+**/build/outputs/device_logcat/
+**/build/outputs/device_screenshot/
+**/build/outputs/device_video/
+
+# Build reports
+**/build/reports/
+**/build/test-results/
+**/build/intermediates/
+**/build/tmp/
+
+# NDK and native build files
+**/build/intermediates/cmake/
+**/build/intermediates/ndk/
+**/build/intermediates/merged_assets/
+**/build/intermediates/merged_manifests/
+**/build/intermediates/merged_res/
+**/build/intermediates/merged_res_blame_folder/
+**/build/intermediates/navigation_json/
+**/build/intermediates/packaged_manifests/
+**/build/intermediates/packaged_res/
+**/build/intermediates/project_dex_archive/
+**/build/intermediates/runtime_symbol_list/
+**/build/intermediates/signing_config_versions/
+**/build/intermediates/source_set_path_map/
+**/build/intermediates/stable_resource_ids_file/
+**/build/intermediates/symbol_list_with_package_name/
+
+# Kotlin build files
+**/build/tmp/kotlin/
+**/build/tmp/kapt/
+**/build/tmp/kotlin-classes/
+
+# ProGuard files
+**/build/outputs/mapping/
+**/build/outputs/seeds/
+**/build/outputs/usage/
