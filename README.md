@@ -1,47 +1,47 @@
 # Agora EComm Host
 
-基于Agora RTC SDK构建的强大视频处理应用，具备美颜功能、LUT滤镜、虚拟背景和高级视频增强功能。
+A powerful video processing application built with Agora RTC SDK, featuring beauty features, LUT filters, virtual backgrounds, and advanced video enhancement capabilities.
 
-## 🌟 项目特色
+## 🌟 Project Features
 
-- **实时美颜**: AI驱动的面部美化和修饰
-- **LUT滤镜**: 支持32位cube文件，专业级色彩分级和滤镜效果
-- **虚拟背景**: 实时背景替换和模糊效果
-- **视频增强**: 低光增强、色彩优化、降噪处理
-- **多语言支持**: 简体中文、英文、日文、韩文
-- **精简架构**: 专注于视频处理核心功能的单一模块设计
+- **Real-time Beauty**: AI-driven facial enhancement and beautification
+- **LUT Filters**: Support for 32-bit cube files, professional color grading and filter effects
+- **Virtual Backgrounds**: Real-time background replacement and blur effects
+- **Video Enhancement**: Low-light enhancement, color optimization, noise reduction
+- **Multi-language Support**: Chinese (Simplified), English, Japanese, Korean
+- **Streamlined Architecture**: Single-module design focused on core video processing functionality
 
-## 📸 LUT效果展示
+## 📸 LUT Effect Showcase
 
-### 原始效果
-![原始视频效果](docs/imgs/Screenshot_20250811-170043_EComm%20Video%20Process%20Extension.jpg)
+### Original Effect
+![Original Video Effect](docs/imgs/Screenshot_20250811-170043_EComm%20Video%20Process%20Extension.jpg)
 
-### LUT滤镜应用后
-![LUT滤镜效果](docs/imgs/Screenshot_20250811-170112_EComm%20Video%20Process%20Extension.jpg)
+### After LUT Filter Application
+![LUT Filter Effect](docs/imgs/Screenshot_20250811-170112_EComm%20Video%20Process%20Extension.jpg)
 
-> 以上图片展示了应用LUT滤镜前后的对比效果，可以看到色彩分级和滤镜对视频质量的显著提升。
+> The above images demonstrate the before and after comparison of applying LUT filters, showing the significant improvement in video quality through color grading and filter effects.
 
-## 🏗️ 项目架构
+## 🏗️ Project Architecture
 
-本项目采用精简的单模块架构，所有功能都集成在 `ecomm/` 模块中：
+This project adopts a streamlined single-module architecture with all functionality integrated in the `ecomm/` module:
 
-- **ecomm/**: 主要的视频处理应用模块
-  - 包含完整的Android应用代码
-  - 集成Agora RTC SDK功能
-  - 实现美颜、滤镜、虚拟背景等核心特性
-  - 支持多语言界面和配置管理
+- **ecomm/**: Main video processing application module
+  - Contains complete Android application code
+  - Integrates Agora RTC SDK functionality
+  - Implements beauty, filter, virtual background and other core features
+  - Supports multi-language interface and configuration management
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 系统要求
-- Android Studio Arctic Fox 或更高版本
+### System Requirements
+- Android Studio Arctic Fox or later
 - Android SDK API 21+
-- Agora Console 账户
-- 支持OpenGL ES 3.0的设备
+- Agora Console account
+- Device supporting OpenGL ES 3.0
 
-### 安装步骤
-1. 克隆项目仓库
-2. 运行配置脚本：
+### Installation Steps
+1. Clone the project repository
+2. Run the configuration script:
    ```bash
    # macOS/Linux
    chmod +x scripts/auto_config.sh
@@ -50,47 +50,47 @@
    # Windows
    scripts\auto_config.bat
    ```
-3. 按照提示配置Agora凭据
-4. 在Android Studio中打开项目
-5. 构建并运行ecomm模块
+3. Follow the prompts to configure your Agora credentials
+4. Open the project in Android Studio
+5. Build and run the ecomm module
 
-## 📚 文档
+## 📚 Documentation
 
-### 多语言文档
+### Multi-language Documentation
 - [中文文档](docs/README_zh-CN.md)
 - [English Documentation](docs/README_en-US.md)
 - [日本語ドキュメント](docs/README_ja-JP.md)
 - [한국어 문서](docs/README_ko-KR.md)
 
-### 配置指南
+### Configuration Guides
 - [配置指南 - 中文](docs/README_CONFIGURATION_zh-CN.md)
 - [Configuration Guide - English](docs/README_CONFIGURATION_en-US.md)
 - [設定ガイド - 日本語](docs/README_CONFIGURATION_ja-JP.md)
 - [설정 가이드 - 한국어](docs/README_CONFIGURATION_ko-KR.md)
 
-### 技术文档
-- [配置总结](docs/CONFIGURATION_SUMMARY.md) - 技术配置概览
-- [重构总结](ecomm/REFACTORING_SUMMARY.md) - 开发笔记和架构说明
-- [Git配置提醒](docs/GIT_IGNORE_NOTICE.md) - 安全配置指南
-- [发布检查清单](docs/RELEASE_CHECKLIST.md) - 发布前检查
+### Technical Documentation
+- [Configuration Summary](docs/CONFIGURATION_SUMMARY.md) - Technical configuration overview
+- [Refactoring Summary](ecomm/REFACTORING_SUMMARY.md) - Development notes and architecture details
+- [Git Configuration Notice](docs/GIT_IGNORE_NOTICE.md) - Security configuration guide
+- [Release Checklist](docs/RELEASE_CHECKLIST.md) - Pre-release checklist
 
-## 🔗 相关链接
+## 🔗 Related Links
 
-- [Agora官方文档](https://docs.agora.io/en/)
+- [Agora Official Documentation](https://docs.agora.io/en/)
 - [Agora Console](https://console.agora.io/)
-- [Agora开发者社区](https://docs.agora.io/en/)
+- [Agora Developer Community](https://docs.agora.io/en/)
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-1. Fork项目仓库
-2. 创建功能分支
-3. 遵循代码规范
-4. 提交Pull Request
+1. Fork the project repository
+2. Create a feature branch
+3. Follow coding standards
+4. Submit a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目采用指定的开源许可证。使用前请仔细阅读许可证条款。
+This project is licensed under the specified open source license. Please read the license terms carefully before use.
 
 ---
 
-**Agora EComm Host** - 让视频通信更智能、更美丽！🎥✨
+**Agora EComm Host** - Making video communication smarter and more beautiful! 🎥✨
