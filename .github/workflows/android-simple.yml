@@ -25,7 +25,7 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'

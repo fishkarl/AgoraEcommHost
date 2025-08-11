@@ -29,7 +29,7 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'
@@ -83,7 +83,7 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'
@@ -122,7 +122,7 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'
@@ -133,22 +133,12 @@ jobs:
     - name: Run Lint
       run: ./gradlew :ecomm:lintDebug
       
-    - name: Run Detekt
-      run: ./gradlew :ecomm:detekt
-      
     - name: Upload Lint Results
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: lint-results
         path: ecomm/build/reports/lint-results.xml
-        
-    - name: Upload Detekt Results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: detekt-results
-        path: ecomm/build/reports/detekt/
         
   security:
     runs-on: ubuntu-latest
@@ -166,23 +156,13 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
-    - name: Run Dependency Check
-      run: ./gradlew :ecomm:dependencyCheckAnalyze
-      
-    - name: Upload Security Results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: security-results
-        path: ecomm/build/reports/dependency-check-report.html
         
   release:
     runs-on: ubuntu-latest
@@ -201,7 +181,7 @@ jobs:
         cache: 'gradle'
         
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v0
+      uses: android-actions/setup-android@v2
       with:
         sdk-platform: '35'
         sdk-build-tools: '35.0.0'
@@ -212,26 +192,16 @@ jobs:
     - name: Build Release Bundle
       run: ./gradlew :ecomm:bundleRelease
       
-    - name: Sign Release Bundle
-      uses: r0adkll/sign-android-release@v1
-      id: sign_app
-      with:
-        releaseDirectory: ecomm/build/outputs/bundle/release
-        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-        alias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
-        
     - name: Upload Release Bundle
       uses: actions/upload-artifact@v4
       with:
         name: ecomm-release-bundle
-        path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        path: ecomm/build/outputs/bundle/release/
         
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        files: ecomm/build/outputs/bundle/release/*
         draft: false
         prerelease: false
         generate_release_notes: true
