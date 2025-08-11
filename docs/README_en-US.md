@@ -22,7 +22,7 @@ A powerful video processing application built with Agora RTC SDK, featuring beau
 - Multi-language error messages and help information
 
 ### 🔧 Technical Architecture
-- **Modular Design**: Separation of main app module and video processing module
+- **Streamlined Design**: Single-module architecture focused on core video processing functionality
 - **Configuration Management**: Secure credential management system
 - **Automation Scripts**: Cross-platform configuration script support
 - **Real-time Processing**: Low-latency video stream processing
@@ -47,7 +47,8 @@ A powerful video processing application built with Agora RTC SDK, featuring beau
    scripts\auto_config.bat
    ```
 3. Follow the prompts to configure your Agora credentials
-4. Build and run the project
+4. Open the project in Android Studio
+5. Build and run the ecomm module
 
 ## 📱 Main Features
 
@@ -71,13 +72,11 @@ A powerful video processing application built with Agora RTC SDK, featuring beau
 
 ## 🏗️ Project Structure
 
+This project adopts a streamlined single-module architecture with all functionality integrated in the `ecomm/` module:
+
 ```
 AgoraEcommHost/
-├── app/                           # Main application module
-│   ├── src/main/java/            # Kotlin/Compose code
-│   ├── src/main/res/             # Application resources
-│   └── build.gradle.kts          # Build configuration
-├── ecomm/                        # Video processing module
+├── ecomm/                        # Main video processing application module
 │   ├── src/main/java/            # Java video processing code
 │   ├── src/main/res/             # Module resources
 │   ├── src/main/assets/          # LUT files and filter resources
@@ -87,6 +86,8 @@ AgoraEcommHost/
 │   └── auto_config.bat          # Windows configuration script
 └── docs/                         # Project documentation
 ```
+
+> **Note**: The project has been simplified from a multi-module architecture to a single-module architecture, removing the unnecessary app module to focus on core video processing functionality.
 
 ## 🔐 Security Features
 
