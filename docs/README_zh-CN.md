@@ -27,6 +27,16 @@
 - **自动化脚本**: 跨平台配置脚本支持
 - **实时处理**: 低延迟视频流处理
 
+## 📸 LUT效果展示
+
+### 原始效果
+![原始视频效果](../docs/imgs/Screenshot_20250811-170043_EComm%20Video%20Process%20Extension.jpg)
+
+### LUT滤镜应用后
+![LUT滤镜效果](../docs/imgs/Screenshot_20250811-170112_EComm%20Video%20Process%20Extension.jpg)
+
+> 以上图片展示了应用LUT滤镜前后的对比效果，可以看到色彩分级和滤镜对视频质量的显著提升。
+
 ## 🚀 快速开始
 
 ### 系统要求

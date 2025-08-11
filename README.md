@@ -11,6 +11,16 @@
 - **多语言支持**: 简体中文、英文、日文、韩文
 - **精简架构**: 专注于视频处理核心功能的单一模块设计
 
+## 📸 LUT效果展示
+
+### 原始效果
+![原始视频效果](docs/imgs/Screenshot_20250811-170043_EComm%20Video%20Process%20Extension.jpg)
+
+### LUT滤镜应用后
+![LUT滤镜效果](docs/imgs/Screenshot_20250811-170112_EComm%20Video%20Process%20Extension.jpg)
+
+> 以上图片展示了应用LUT滤镜前后的对比效果，可以看到色彩分级和滤镜对视频质量的显著提升。
+
 ## 🏗️ 项目架构
 
 本项目采用精简的单模块架构，所有功能都集成在 `ecomm/` 模块中：

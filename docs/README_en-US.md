@@ -27,6 +27,16 @@ A powerful video processing application built with Agora RTC SDK, featuring beau
 - **Automation Scripts**: Cross-platform configuration script support
 - **Real-time Processing**: Low-latency video stream processing
 
+## 📸 LUT Effect Showcase
+
+### Original Effect
+![Original Video Effect](../docs/imgs/Screenshot_20250811-170043_EComm%20Video%20Process%20Extension.jpg)
+
+### After LUT Filter Application
+![LUT Filter Effect](../docs/imgs/Screenshot_20250811-170112_EComm%20Video%20Process%20Extension.jpg)
+
+> The above images demonstrate the before and after comparison of applying LUT filters, showing the significant improvement in video quality through color grading and filter effects.
+
 ## 🚀 Quick Start
 
 ### System Requirements
