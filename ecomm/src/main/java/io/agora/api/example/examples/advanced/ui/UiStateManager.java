@@ -56,12 +56,21 @@ public class UiStateManager {
         this.fabShowControls = fabShowControls;
         this.localVideoContainer = localVideoContainer;
         this.remoteVideoContainer = remoteVideoContainer;
+        
+        Log.d(TAG, "UI components set - joinControlPanel: " + (joinControlPanel != null ? "not null" : "null"));
+        Log.d(TAG, "UI components set - joinButton: " + (joinButton != null ? "not null" : "null"));
     }
     
     /**
      * Update UI state after successfully joining channel
      */
     public void updateUiForChannelJoined() {
+        Log.d(TAG, "updateUiForChannelJoined called - checking UI components...");
+        Log.d(TAG, "joinButton: " + (joinButton != null ? "not null" : "null"));
+        Log.d(TAG, "joinControlPanel: " + (joinControlPanel != null ? "not null" : "null"));
+        Log.d(TAG, "controlPanel: " + (controlPanel != null ? "not null" : "null"));
+        Log.d(TAG, "rightControlPanel: " + (rightControlPanel != null ? "not null" : "null"));
+        
         handler.post(() -> {
             if (joinButton != null) {
                 joinButton.setEnabled(true);
@@ -73,6 +82,9 @@ public class UiStateManager {
             
             if (joinControlPanel != null) {
                 Log.d(TAG, "joinControlPanel current visibility: " + joinControlPanel.getVisibility());
+                Log.d(TAG, "joinControlPanel id: " + joinControlPanel.getId());
+                Log.d(TAG, "joinControlPanel parent: " + (joinControlPanel.getParent() != null ? "has parent" : "no parent"));
+                
                 joinControlPanel.setVisibility(View.GONE);
                 Log.d(TAG, "Set joinControlPanel visibility to GONE");
                 
@@ -92,7 +104,7 @@ public class UiStateManager {
                     }
                 }, 100);
             } else {
-                Log.w(TAG, "joinControlPanel is null");
+                Log.w(TAG, "joinControlPanel is null when trying to hide it!");
             }
             
             // If control panel is hidden, show right control button panel

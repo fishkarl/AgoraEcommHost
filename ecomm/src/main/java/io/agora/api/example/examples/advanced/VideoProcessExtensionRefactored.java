@@ -53,6 +53,7 @@ import io.agora.api.example.examples.advanced.ui.DialogManager;
 import io.agora.api.example.examples.advanced.ui.LanguageManager;
 import io.agora.api.example.examples.advanced.ui.UiStateManager;
 import io.agora.api.example.examples.advanced.utils.PermissionHelper;
+import io.agora.api.example.examples.advanced.utils.RuntimeObjectManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,22 +191,35 @@ public class VideoProcessExtensionRefactored extends Fragment implements
     private void initializeManagers() {
         Context context = requireContext();
         
-        // Initialize various managers
-        engineManager = new RtcEngineManager(context);
-        filterManager = new FilterManager(context, null); // Set engine later
-        beautyManager = new BeautyFeatureManager(context, null); // Set engine later
-        cameraManager = new CameraManager(context, null); // Set engine later
-        focusController = new FocusController(context, null); // Set engine later
+        // Try to restore runtime objects first
+        RuntimeObjectManager.RuntimeObjects runtimeObjects = RuntimeObjectManager.restoreRuntimeObjects(context, this);
+        
+        if (runtimeObjects != null) {
+            // Use restored runtime objects
+            Log.d(TAG, "Using restored runtime objects from previous Fragment");
+            engineManager = runtimeObjects.engineManager;
+            filterManager = runtimeObjects.filterManager;
+            beautyManager = runtimeObjects.beautyManager;
+            cameraManager = runtimeObjects.cameraManager;
+            focusController = runtimeObjects.focusController;
+            eventHandler = runtimeObjects.eventHandler;
+            dialogManager = runtimeObjects.dialogManager;
+        } else {
+            // Create new runtime objects
+            Log.d(TAG, "Creating new runtime objects");
+            engineManager = new RtcEngineManager(context);
+            filterManager = new FilterManager(context, null); // Set engine later
+            beautyManager = new BeautyFeatureManager(context, null); // Set engine later
+            cameraManager = new CameraManager(context, null); // Set engine later
+            focusController = new FocusController(context, null); // Set engine later
+            eventHandler = new RtcEventHandler(context, null, this); // Set engine later
+            dialogManager = new DialogManager(context, filterManager, this);
+        }
+        
+        // These are always created new for each Fragment
         uiStateManager = new UiStateManager(context);
         languageManager = new LanguageManager(context);
-        // ControlPanelManager will be initialized in onViewCreated
         permissionHelper = new PermissionHelper(context);
-        
-        // Initialize event handler
-        eventHandler = new RtcEventHandler(context, null, this); // Set engine later
-        
-        // Initialize dialog manager
-        dialogManager = new DialogManager(context, filterManager, this);
     }
     
     /**
@@ -230,6 +244,12 @@ public class VideoProcessExtensionRefactored extends Fragment implements
                 engine.enableExtension("agora_video_filters_clear_vision", "clear_vision", true);
                 beautyManager.updateExtensionProperty();
                 beautyManager.updateFaceShapeBeautyStyleOptions();
+                
+                // Save runtime objects to static variables for language switching
+                RuntimeObjectManager.preserveRuntimeObjects(
+                    engineManager, filterManager, beautyManager, cameraManager,
+                    focusController, eventHandler, dialogManager
+                );
                 
                 Log.d(TAG, "Engine and extensions initialized successfully");
             }
@@ -364,7 +384,37 @@ public class VideoProcessExtensionRefactored extends Fragment implements
         uiStateManager.setUiComponents(join, joinControlPanel, controlPanel, rightControlPanel, 
                                      fabShowControls, fl_local, fl_remote);
         
+        // Check if we need to restore UI state after language change
+        checkAndRestoreUiStateAfterRecreation();
+        
         Log.d(TAG, "Views initialized for refactored Video Process Extension");
+        Log.d(TAG, "UiStateManager components set - joinControlPanel: " + (joinControlPanel != null ? "not null" : "null"));
+    }
+    
+    /**
+     * Check and restore UI state after Fragment recreation (e.g., language change)
+     */
+    private void checkAndRestoreUiStateAfterRecreation() {
+        // Check if we were previously joined to a channel
+        if (engineManager != null && engineManager.isJoined()) {
+            Log.d(TAG, "Fragment recreated while channel was joined - restoring UI state");
+            joined = true;
+            
+            // Restore UI state for joined channel
+            handler.postDelayed(() -> {
+                Log.d(TAG, "Manually triggering UI update for joined channel after Fragment recreation");
+                uiStateManager.updateUiForChannelJoined();
+                
+                // Additional checks for video views
+                if (fl_local != null && fl_remote != null) {
+                    // Restore video views if needed
+                    Log.d(TAG, "Local video container children: " + fl_local.getChildCount());
+                    Log.d(TAG, "Remote video container children: " + fl_remote.getChildCount());
+                }
+            }, 200); // Slightly longer delay to ensure UI is fully initialized
+        } else {
+            Log.d(TAG, "Fragment recreated - no active channel connection");
+        }
     }
 
     @Override
@@ -383,12 +433,14 @@ public class VideoProcessExtensionRefactored extends Fragment implements
             // Remove screen touch listeners
         }
         
-        // Only clean up Engine when Activity is truly destroyed
-        if (engineManager != null && !engineManager.isInitialized()) {
-            Log.d(TAG, "Cleaning up RTC Engine in onDestroy");
-            engineManager.destroyEngine();
-        } else if (engineManager != null) {
-            Log.d(TAG, "Preserving RTC Engine for language switch");
+        // Check if this is a language switch (Fragment recreation) or real destruction
+        if (getActivity() != null && getActivity().isFinishing()) {
+            // Activity is finishing, clean up all runtime objects
+            Log.d(TAG, "Activity finishing - cleaning up all runtime objects");
+            RuntimeObjectManager.clearRuntimeObjects();
+        } else {
+            // This is likely a language switch, preserve runtime objects
+            Log.d(TAG, "Fragment destroyed but Activity not finishing - preserving runtime objects");
         }
     }
 
